@@ -51,23 +51,58 @@ import java.util.Iterator;
  */
 
 /* Question 4 b
- * 
+ * public int sizeB(ListNode head){ // b
+		int n = 1;
+		if(head.getNext() != null){
+			n += sizeB(head.getNext());
+		}
+		return n;
+	}
+ */
+
+/* Question 5
+ * public ListNode add(ListNode head, Object value){ // 5
+		ListNode node = head;
+		while(node.getNext() != null){
+			node = node.getNext();
+		}
+		ListNode newnode = new ListNode(value, null);
+		node.setNext(newnode);
+		return head;
+	}
+ */
+
+/* Question 8
+ * public ListNode rotate(ListNode head){ // 8
+		ListNode newhead = head.getNext();
+		ListNode node = head;
+		while(node.getNext() != null){
+			node = node.getNext();
+		}
+		node.setNext(head);
+		head.setNext(null);
+		return newhead;
+	}
  */
 
 public class Chapter21 {
 	
 	public Chapter21(){
-		ListNode node3 = new ListNode("Node 3", null );
+		ListNode node3 = new ListNode("Node 3", null ); //Question 1
 		ListNode node2 = new ListNode("Node 2", node3 );
 		ListNode node1 = new ListNode("Node 1", node2 );
 		ListNode head = node1;
-		System.out.println("The Size is "+sizeB(head));
+		System.out.println((head));
+		head = add(head, "Node 4");
+		System.out.println(head);
+		head = rotate(head);
+		System.out.println(head);
 	}
-	public boolean hasTwo(ListNode head){
+	public boolean hasTwo(ListNode head){ //Question 2
 		return head.getNext().getNext() != null;
 	}
 	
-	public ListNode removeFirst(ListNode head){
+	public ListNode removeFirst(ListNode head){ //Question 3
 		try{
 			head = head.getNext();
 			return head;
@@ -81,7 +116,7 @@ public class Chapter21 {
 		}
 	}
 	
-	public int sizeA(ListNode head){ // a
+	public int sizeA(ListNode head){ // Question 4 a
 		int n = 0;
 		for (ListNode node = head; node != null; node = node.getNext()){
 			n++;
@@ -89,15 +124,33 @@ public class Chapter21 {
 		return n;
 	}
 	
-	public int sizeB(ListNode head){ // b
-		int n = 0;
-		if(head.getValue() == null){
-			System.out.println("Tears");
-		}
-		if(head.getValue() != null){
+	public int sizeB(ListNode head){ // Question 4 b
+		int n = 1;
+		if(head.getNext() != null){
 			n += sizeB(head.getNext());
 		}
 		return n;
+	}
+	
+	public ListNode add(ListNode head, Object value){ // Question 5
+		ListNode node = head;
+		while(node.getNext() != null){
+			node = node.getNext();
+		}
+		ListNode newnode = new ListNode(value, null);
+		node.setNext(newnode);
+		return head;
+	}
+	
+	public ListNode rotate(ListNode head){ // Question 8
+		ListNode newhead = head.getNext();
+		ListNode node = head;
+		while(node.getNext() != null){
+			node = node.getNext();
+		}
+		node.setNext(head);
+		head.setNext(null);
+		return newhead;
 	}
 	
 	public static void main(String[] args){

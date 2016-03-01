@@ -18,4 +18,11 @@ public class ListNode {
 	
 	public void setValue(Object v){ value = v;}
 	public void setNext(ListNode nx){ next = nx;}
+	public String toString(){
+		if(next != null){
+			return value.toString() +" "+ next.toString();
+		}else{
+			return value.toString();
+		}
+	}
 }
